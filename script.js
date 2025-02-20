@@ -235,24 +235,216 @@ newsletterForm.addEventListener('submit', (e) => {
 });
 
 // Mobile Menu Toggle
-const createMobileMenu = () => {
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelector('.nav-links');
-    
-    const menuButton = document.createElement('button');
-    menuButton.classList.add('mobile-menu-btn');
-    menuButton.innerHTML = '☰';
-    
-    navbar.insertBefore(menuButton, navLinks);
-    
-    menuButton.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
+document.addEventListener('DOMContentLoaded', function() {
+    // Image Loading Handler
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+            
+            img.addEventListener('error', () => {
+                img.src = 'https://via.placeholder.com/400x600?text=Image+Not+Found';
+                img.classList.add('loaded');
+            });
+        }
     });
-};
 
-if (window.innerWidth <= 768) {
-    createMobileMenu();
+    // Mobile Menu Functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navbar = document.querySelector('.navbar');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-links') && !event.target.closest('.mobile-menu-btn')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            }
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+    }
+
+    // Smooth Scroll Implementation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            
+            if (target) {
+                const navbarHeight = navbar.offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Initialize other features
+    initializeAnimations();
+    initializeBookCarousel();
+    setupScrollEffects();
+});
+
+// Separate animation initialization
+function initializeAnimations() {
+    if (typeof gsap !== 'undefined') {
+        // Hero Animations
+        const heroAnimations = [
+            { element: '.hero-badge', y: -30, delay: 0 },
+            { element: '.hero-title', y: 50, delay: 0.3 },
+            { element: '.hero-subtitle', y: 30, delay: 0.6 },
+            { element: '.hero-buttons .cta-button', scale: 0.8, delay: 0.9, stagger: 0.2 },
+            { element: '.stat-item', y: 30, delay: 1.2, stagger: 0.2 }
+        ];
+
+        heroAnimations.forEach(animation => {
+            const elements = document.querySelectorAll(animation.element);
+            if (elements.length) {
+                gsap.from(elements, {
+                    duration: 1,
+                    y: animation.y,
+                    scale: animation.scale,
+                    opacity: 0,
+                    ease: 'power3.out',
+                    delay: animation.delay,
+                    stagger: animation.stagger
+                });
+            }
+        });
+
+        // Floating Books Animation
+        const books = [
+            { class: '.book1', y: -20, rotation: 3, delay: 0 },
+            { class: '.book2', y: -15, rotation: -2, delay: 0.2 },
+            { class: '.book3', y: -10, rotation: 2, delay: 0.4 }
+        ];
+
+        books.forEach(book => {
+            const element = document.querySelector(book.class);
+            if (element) {
+                gsap.to(element, {
+                    y: book.y,
+                    rotation: book.rotation,
+                    duration: 2,
+                    ease: 'power1.inOut',
+                    yoyo: true,
+                    repeat: -1,
+                    delay: book.delay
+                });
+            }
+        });
+    }
 }
+
+// Book carousel initialization
+function initializeBookCarousel() {
+    const bookCarousel = document.querySelector('.book-carousel');
+    if (bookCarousel && bookData && bookData.length) {
+        bookCarousel.innerHTML = ''; // Clear existing content
+        bookData.forEach(book => {
+            bookCarousel.innerHTML += createBookCard(book);
+        });
+    }
+}
+
+// Scroll effects setup
+function setupScrollEffects() {
+    const navbar = document.querySelector('.navbar');
+    let ticking = false;
+    
+    // Throttled scroll handler
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const animateOnScroll = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                requestAnimationFrame(() => {
+                    entry.target.classList.add('animate');
+                });
+                animateOnScroll.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Add elements to observe
+    const elementsToAnimate = document.querySelectorAll(
+        '.book-card, .genre-card, .feature-card, .benefit-card, .hero-content, .featured-content, .benefits-content'
+    );
+    
+    elementsToAnimate.forEach(el => {
+        animateOnScroll.observe(el);
+    });
+
+    // Optimize parallax effect
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+        const parallaxScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const statsRect = statsSection.getBoundingClientRect();
+                    
+                    if (statsRect.top < window.innerHeight && statsRect.bottom > 0) {
+                        statsSection.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+        
+        window.addEventListener('scroll', parallaxScroll, { passive: true });
+    }
+}
+
+// Handle errors gracefully
+window.addEventListener('error', function(e) {
+    console.warn('Error caught:', e.error);
+    // Prevent error from breaking the site
+    return false;
+});
 
 // Book Card Hover Effect
 const bookCards = document.querySelectorAll('.book-card');
@@ -391,13 +583,61 @@ const benefitsObserver = new IntersectionObserver((entries) => {
 
 benefitsObserver.observe(benefitsSection);
 
-// Parallax Effect for Stats Section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const statsSection = document.querySelector('.stats-section');
-    const statsRect = statsSection.getBoundingClientRect();
+// Add scroll-based animations
+window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
     
-    if (statsRect.top < window.innerHeight && statsRect.bottom > 0) {
-        statsSection.style.backgroundPositionY = `${scrolled * 0.5}px`;
-    }
-}); 
+    // Fade in elements as they come into view
+    document.querySelectorAll('.fade-in-element').forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top + scrollPosition;
+        if (scrollPosition > elementPosition - window.innerHeight * 0.8) {
+            element.classList.add('visible');
+        }
+    });
+});
+
+// Add touch device detection
+function isTouchDevice() {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+}
+
+if (isTouchDevice()) {
+    document.body.classList.add('touch-device');
+}
+
+// Optimize images for device pixel ratio
+function optimizeImages() {
+    const pixelRatio = window.devicePixelRatio || 1;
+    const images = document.querySelectorAll('img[data-src]');
+    
+    images.forEach(img => {
+        if (pixelRatio > 1) {
+            const highResSrc = img.getAttribute('data-src-2x');
+            if (highResSrc) {
+                img.src = highResSrc;
+            }
+        } else {
+            img.src = img.getAttribute('data-src');
+        }
+    });
+}
+
+// Initialize optimizations
+document.addEventListener('DOMContentLoaded', function() {
+    optimizeImages();
+});
+
+// Handle orientation changes
+window.addEventListener('orientationchange', function() {
+    // Add a small delay to ensure new dimensions are calculated
+    setTimeout(() => {
+        // Trigger any necessary layout adjustments
+        window.dispatchEvent(new Event('resize'));
+    }, 100);
+});
+
+// Add passive event listeners for better scroll performance
+document.addEventListener('touchstart', function() {}, {passive: true});
+document.addEventListener('touchmove', function() {}, {passive: true}); 

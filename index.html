@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookie - Your Digital Reading Paradise</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-logo">
             <h1>Bookie</h1>
@@ -17,246 +16,202 @@
         <div class="nav-links">
             <a href="#home" class="active">Home</a>
             <a href="#explore">Explore</a>
-            <a href="#popular">Popular Reads</a>
-            <a href="#genres">Genres</a>
-            <a href="#community">Community</a>
-        </div>
-        <div class="nav-search">
-            <input type="text" placeholder="Search books...">
-            <button class="search-btn">🔍</button>
-        </div>
-        <div class="nav-auth">
-            <button class="login-btn">Login</button>
-            <button class="signup-btn">Sign Up</button>
+            <a href="#books">Books</a>
+            <a href="#about">About</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-overlay"></div>
-        <div class="hero-wrapper">
-            <div class="hero-left">
-                <div class="hero-content">
-                    <div class="hero-badge">📚 Welcome to Bookie</div>
-                    <h1 class="hero-title">
-                        <span class="highlight">Discover</span> Your Next
-                        <span class="text-gradient">Adventure</span>
-                    </h1>
-                    <p class="hero-subtitle">Embark on a journey through countless stories, where every page opens a new world of imagination and discovery.</p>
-                    <div class="hero-buttons">
-                        <button class="cta-button primary">
-                            <span class="button-icon">🚀</span>
-                            Start Reading Now
-                        </button>
-                        <button class="cta-button secondary">
-                            <span class="button-icon">📖</span>
-                            Browse Library
-                        </button>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-icon">📚</div>
-                            <span class="stat-number">10K+</span>
-                            <span class="stat-label">Books</span>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">👥</div>
-                            <span class="stat-number">50K+</span>
-                            <span class="stat-label">Readers</span>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">⭐</div>
-                            <span class="stat-number">1M+</span>
-                            <span class="stat-label">Downloads</span>
-                        </div>
-                    </div>
-                </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>📚 Welcome to Bookie</span>
             </div>
-            <div class="hero-right">
-                <div class="floating-books">
-                    <div class="book-stack">
-                        <img src="Src/reading-book-illustration.jpg" alt="Featured Book 1" class="floating-book book1">
-                        <img src="Src/7117804_3529668.jpg" alt="Featured Book 2" class="floating-book book2">
-                        <img src="Src/na_feb_36.jpg" alt="Featured Book 3" class="floating-book book3">
-                    </div>
-                </div>
+            
+            <div class="hero-text">
+                <h1>
+                    <span class="purple">Discover</span> Your<br>
+                    Next <span class="purple">Adventure</span>
+                </h1>
+                <p>Embark on a journey through countless stories,<br>where every page opens a new world of<br>imagination and discovery.</p>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <p>Scroll to explore</p>
-        </div>
-    </section>
 
-    <!-- Stats Section with Image -->
-    <section class="stats-section">
-        <div class="stats-overlay"></div>
-        <div class="stats-content">
-            <div class="stats-grid">
+            <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number">10K+</span>
-                    <span class="stat-label">Books</span>
+                    <span class="stat-icon">📚</span>
+                    <div class="stat-info">
+                        <h3>10K+</h3>
+                        <p>BOOKS</p>
+                    </div>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">50K+</span>
-                    <span class="stat-label">Readers</span>
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-info">
+                        <h3>50K+</h3>
+                        <p>READERS</p>
+                    </div>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">1M+</span>
-                    <span class="stat-label">Downloads</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Section -->
-    <section class="featured">
-        <div class="featured-content">
-            <div class="featured-text">
-                <h2>Your Reading Journey Starts Here</h2>
-                <p>Join our community of book lovers and discover stories that will stay with you forever. From classic literature to contemporary bestsellers, we have something for every reader.</p>
-                <ul class="featured-list">
-                    <li>✨ Personalized recommendations</li>
-                    <li>📚 Extensive collection of genres</li>
-                    <li>🌟 Expert curated reading lists</li>
-                    <li>💫 Interactive reading experience</li>
-                </ul>
-                <button class="featured-button">Explore Collection</button>
-            </div>
-            <div class="featured-image">
-                <img src="Src/27669009_reading_05.jpg" alt="Reading Experience" class="reading-image">
-            </div>
-        </div>
-    </section>
-
-    <!-- Reading Benefits Section -->
-    <section class="benefits-section">
-        <div class="benefits-content">
-            <div class="benefits-image">
-                <img src="Src/na_feb_36.jpg" alt="Reading Benefits" class="benefits-img">
-            </div>
-            <div class="benefits-text">
-                <h2>Why Choose Bookie?</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <span class="benefit-icon">📱</span>
-                        <h3>Read Anywhere</h3>
-                        <p>Access your books on any device, anytime</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">🎯</span>
-                        <h3>Smart Goals</h3>
-                        <p>Track your reading progress effortlessly</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">🤝</span>
-                        <h3>Community</h3>
-                        <p>Connect with readers worldwide</p>
-                    </div>
-                    <div class="benefit-card">
-                        <span class="benefit-icon">🎁</span>
-                        <h3>Rewards</h3>
-                        <p>Earn points and unlock special features</p>
+                    <span class="stat-icon">⭐</span>
+                    <div class="stat-info">
+                        <h3>1M+</h3>
+                        <p>DOWNLOADS</p>
                     </div>
                 </div>
             </div>
+
+            <div class="scroll-indicator">
+                <div class="scroll-circle"></div>
+                <p>Scroll to explore</p>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="Src/reading-book-illustration.jpg" alt="Reader with Books" class="main-image">
         </div>
     </section>
 
-    <!-- Trending Books Section -->
-    <section class="trending" id="popular">
-        <h2>Trending Books</h2>
-        <div class="book-carousel">
+    <!-- Featured Books -->
+    <section class="featured-books" id="books">
+        <h2>Featured Books</h2>
+        <div class="book-grid">
             <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x300" alt="Book 1">
-                </div>
-                <h3>The Lost City</h3>
-                <p>By John Smith</p>
-                <div class="rating">★★★★☆</div>
+                <img src="Src/7117804_3529668.jpg" alt="Book 1">
+                <h3>The Art of Reading</h3>
+                <p>Discover the joy of literature</p>
             </div>
-            <!-- More book cards will be dynamically added via JavaScript -->
+            <div class="book-card">
+                <img src="Src/na_feb_36.jpg" alt="Book 2">
+                <h3>Modern Classics</h3>
+                <p>Contemporary masterpieces</p>
+            </div>
+            <div class="book-card">
+                <img src="Src/27669009_reading_05.jpg" alt="Book 3">
+                <h3>Digital Library</h3>
+                <p>Read anywhere, anytime</p>
+            </div>
         </div>
     </section>
 
-    <!-- Genres Section -->
-    <section class="genres" id="genres">
-        <h2>Explore Genres</h2>
-        <div class="genre-grid">
-            <div class="genre-card">
-                <img src="https://via.placeholder.com/150" alt="Fiction">
+    <!-- Popular Categories -->
+    <section class="categories" id="explore">
+        <div class="section-header">
+            <h2>Popular Categories</h2>
+            <p>Explore our vast collection across different genres</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card">
+                <span class="category-icon">📖</span>
                 <h3>Fiction</h3>
+                <p>5,000+ Books</p>
             </div>
-            <div class="genre-card">
-                <img src="https://via.placeholder.com/150" alt="Mystery">
+            <div class="category-card">
+                <span class="category-icon">🎭</span>
+                <h3>Drama</h3>
+                <p>2,500+ Books</p>
+            </div>
+            <div class="category-card">
+                <span class="category-icon">🔍</span>
                 <h3>Mystery</h3>
+                <p>3,000+ Books</p>
             </div>
-            <div class="genre-card">
-                <img src="https://via.placeholder.com/150" alt="Fantasy">
-                <h3>Fantasy</h3>
-            </div>
-            <div class="genre-card">
-                <img src="https://via.placeholder.com/150" alt="Romance">
-                <h3>Romance</h3>
+            <div class="category-card">
+                <span class="category-icon">🚀</span>
+                <h3>Sci-Fi</h3>
+                <p>2,000+ Books</p>
             </div>
         </div>
     </section>
 
-    <!-- Community Section -->
-    <section class="community" id="community">
-        <h2>Join Our Community</h2>
-        <div class="community-features">
-            <div class="feature-card">
-                <h3>Book Discussions</h3>
-                <p>Join reading groups and discuss your favorite books</p>
+    <!-- Reading Benefits -->
+    <section class="benefits">
+        <div class="section-header">
+            <h2>Why Reading Matters</h2>
+            <p>Discover the transformative power of reading</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="benefit-icon">🧠</span>
+                <h3>Cognitive Growth</h3>
+                <p>Enhance memory and critical thinking skills</p>
             </div>
-            <div class="feature-card">
-                <h3>Reviews & Ratings</h3>
-                <p>Share your thoughts and discover new recommendations</p>
+            <div class="benefit-card">
+                <span class="benefit-icon">💭</span>
+                <h3>Stress Relief</h3>
+                <p>Escape into stories and reduce anxiety</p>
             </div>
-            <div class="feature-card">
-                <h3>Reading Challenges</h3>
-                <p>Set goals and track your reading progress</p>
+            <div class="benefit-card">
+                <span class="benefit-icon">📚</span>
+                <h3>Knowledge</h3>
+                <p>Expand your understanding of the world</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">💡</span>
+                <h3>Creativity</h3>
+                <p>Stimulate imagination and innovation</p>
             </div>
         </div>
     </section>
 
     <!-- Newsletter Section -->
     <section class="newsletter">
-        <h2>Stay Updated</h2>
-        <p>Subscribe to our newsletter for the latest book releases and updates</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email">
-            <button type="submit">Subscribe</button>
-        </form>
+        <div class="newsletter-content">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest book recommendations and reading tips</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About Bookie</h2>
+            <p>Your digital reading companion that brings stories to life. Access thousands of books, connect with fellow readers, and embark on literary adventures.</p>
+            <div class="features">
+                <div class="feature">
+                    <span>✨</span>
+                    <h3>Easy Access</h3>
+                    <p>Read on any device</p>
+                </div>
+                <div class="feature">
+                    <span>🌟</span>
+                    <h3>Large Collection</h3>
+                    <p>Thousands of titles</p>
+                </div>
+                <div class="feature">
+                    <span>💫</span>
+                    <h3>Community</h3>
+                    <p>Connect with readers</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About Bookie</h3>
-                <p>Your digital reading paradise with endless possibilities.</p>
+                <h3>Bookie</h3>
+                <p>Your digital reading paradise</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Links</h3>
                 <a href="#home">Home</a>
-                <a href="#explore">Explore</a>
-                <a href="#popular">Popular Reads</a>
-                <a href="#genres">Genres</a>
+                <a href="#books">Books</a>
+                <a href="#about">About</a>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Email: hello@bookie.com</p>
-                <p>Phone: (555) 123-4567</p>
+                <p>hello@bookie.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Made by Bhargavtz <a href="https://github.com/Bhargavtz">Github</a></p>
             <p>&copy; 2024 Bookie. All rights reserved.</p>
+            <p>Made by Bhargavtz <a href="https://github.com/Bhargavtz">Github</a></p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html> 
