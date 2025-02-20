@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookie - Your Digital Reading Paradise</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <h1>Bookie</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#explore">Explore</a>
+            <a href="#popular">Popular Reads</a>
+            <a href="#genres">Genres</a>
+            <a href="#community">Community</a>
+        </div>
+        <div class="nav-search">
+            <input type="text" placeholder="Search books...">
+            <button class="search-btn">🔍</button>
+        </div>
+        <div class="nav-auth">
+            <button class="login-btn">Login</button>
+            <button class="signup-btn">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-wrapper">
+            <div class="hero-left">
+                <div class="hero-content">
+                    <div class="hero-badge">📚 Welcome to Bookie</div>
+                    <h1 class="hero-title">
+                        <span class="highlight">Discover</span> Your Next
+                        <span class="text-gradient">Adventure</span>
+                    </h1>
+                    <p class="hero-subtitle">Embark on a journey through countless stories, where every page opens a new world of imagination and discovery.</p>
+                    <div class="hero-buttons">
+                        <button class="cta-button primary">
+                            <span class="button-icon">🚀</span>
+                            Start Reading Now
+                        </button>
+                        <button class="cta-button secondary">
+                            <span class="button-icon">📖</span>
+                            Browse Library
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">📚</div>
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Books</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">👥</div>
+                            <span class="stat-number">50K+</span>
+                            <span class="stat-label">Readers</span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">⭐</div>
+                            <span class="stat-number">1M+</span>
+                            <span class="stat-label">Downloads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="floating-books">
+                    <div class="book-stack">
+                        <img src="7117804_3529668.jpg" alt="Featured Book 1" class="floating-book book1">
+                        <img src="27669009_reading_05.jpg" alt="Featured Book 2" class="floating-book book2">
+                        <img src="na_feb_36.jpg" alt="Featured Book 3" class="floating-book book3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <p>Scroll to explore</p>
+        </div>
+    </section>
+
+    <!-- Stats Section with Image -->
+    <section class="stats-section">
+        <div class="stats-overlay"></div>
+        <div class="stats-content">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">Books</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Readers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1M+</span>
+                    <span class="stat-label">Downloads</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <div class="featured-content">
+            <div class="featured-text">
+                <h2>Your Reading Journey Starts Here</h2>
+                <p>Join our community of book lovers and discover stories that will stay with you forever. From classic literature to contemporary bestsellers, we have something for every reader.</p>
+                <ul class="featured-list">
+                    <li>✨ Personalized recommendations</li>
+                    <li>📚 Extensive collection of genres</li>
+                    <li>🌟 Expert curated reading lists</li>
+                    <li>💫 Interactive reading experience</li>
+                </ul>
+                <button class="featured-button">Explore Collection</button>
+            </div>
+            <div class="featured-image">
+                <img src="27669009_reading_05.jpg" alt="Reading Experience" class="reading-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading Benefits Section -->
+    <section class="benefits-section">
+        <div class="benefits-content">
+            <div class="benefits-image">
+                <img src="na_feb_36.jpg" alt="Reading Benefits" class="benefits-img">
+            </div>
+            <div class="benefits-text">
+                <h2>Why Choose Bookie?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <span class="benefit-icon">📱</span>
+                        <h3>Read Anywhere</h3>
+                        <p>Access your books on any device, anytime</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-icon">🎯</span>
+                        <h3>Smart Goals</h3>
+                        <p>Track your reading progress effortlessly</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-icon">🤝</span>
+                        <h3>Community</h3>
+                        <p>Connect with readers worldwide</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-icon">🎁</span>
+                        <h3>Rewards</h3>
+                        <p>Earn points and unlock special features</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Books Section -->
+    <section class="trending" id="popular">
+        <h2>Trending Books</h2>
+        <div class="book-carousel">
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="https://via.placeholder.com/200x300" alt="Book 1">
+                </div>
+                <h3>The Lost City</h3>
+                <p>By John Smith</p>
+                <div class="rating">★★★★☆</div>
+            </div>
+            <!-- More book cards will be dynamically added via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Genres Section -->
+    <section class="genres" id="genres">
+        <h2>Explore Genres</h2>
+        <div class="genre-grid">
+            <div class="genre-card">
+                <img src="https://via.placeholder.com/150" alt="Fiction">
+                <h3>Fiction</h3>
+            </div>
+            <div class="genre-card">
+                <img src="https://via.placeholder.com/150" alt="Mystery">
+                <h3>Mystery</h3>
+            </div>
+            <div class="genre-card">
+                <img src="https://via.placeholder.com/150" alt="Fantasy">
+                <h3>Fantasy</h3>
+            </div>
+            <div class="genre-card">
+                <img src="https://via.placeholder.com/150" alt="Romance">
+                <h3>Romance</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <h2>Join Our Community</h2>
+        <div class="community-features">
+            <div class="feature-card">
+                <h3>Book Discussions</h3>
+                <p>Join reading groups and discuss your favorite books</p>
+            </div>
+            <div class="feature-card">
+                <h3>Reviews & Ratings</h3>
+                <p>Share your thoughts and discover new recommendations</p>
+            </div>
+            <div class="feature-card">
+                <h3>Reading Challenges</h3>
+                <p>Set goals and track your reading progress</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest book releases and updates</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Bookie</h3>
+                <p>Your digital reading paradise with endless possibilities.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#explore">Explore</a>
+                <a href="#popular">Popular Reads</a>
+                <a href="#genres">Genres</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: hello@bookie.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bookie. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
