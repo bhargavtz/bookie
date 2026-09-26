@@ -1,99 +1,75 @@
-# 📚 Bookie - Your Digital Reading Paradise
+# Bookie
 
-![Bookie Banner](Src/reading-book-illustration.jpg)
+Bookie is a polished reading-platform landing page built with Next.js and TypeScript. It presents a responsive library experience with featured books, category discovery, reading benefits, and a newsletter form in a single-page interface.
 
-## Overview
+> **Status:** Frontend concept / portfolio project. The repository currently contains presentation UI only; the newsletter form is not connected to a mailing service or backend.
 
-Bookie is a modern, user-friendly digital reading platform that connects book lovers with their next great adventure. Our platform offers a seamless reading experience with personalized recommendations, an extensive collection of genres, and an engaging community of readers worldwide.
+![Bookie landing page artwork](public/reading-book-illustration.jpg)
 
-## ✨ Features
+## Highlights
 
-### 📱 Core Features
-- **Read Anywhere**: Access your books on any device, anytime
-- **Smart Goals**: Track your reading progress effortlessly
-- **Community**: Connect with readers worldwide
-- **Rewards**: Earn points and unlock special features
+- Responsive single-page reading experience
+- Hero, featured books, categories, benefits, newsletter, and about sections
+- Smooth in-page navigation and scroll-triggered GSAP animations
+- Local image assets rendered with `next/image`
+- Modern Next.js App Router and TypeScript setup
 
-### 📚 Library Features
-- Extensive collection spanning multiple genres
-- Personalized book recommendations
-- Expert-curated reading lists
-- Interactive reading experience
-- Real-time progress tracking
+## Tech stack
 
-### 🤝 Community Features
-- Book discussions and reading groups
-- Reviews and ratings system
-- Reading challenges
-- Community events
+- [Next.js](https://nextjs.org/) 15
+- React 19
+- TypeScript
+- GSAP with ScrollTrigger
+- Tailwind CSS v4 PostCSS integration
 
-## 🚀 Getting Started
+## Run locally
 
 ### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Internet connection
 
-### Installation
-1. Clone the repository:
-```bash
-git clone https://github.com/Bhargavtz/bookie.git
-```
+- Node.js 20 or newer recommended
+- npm 10 or newer
 
-2. Navigate to the project directory:
+### Setup
+
 ```bash
+git clone https://github.com/bhargavtz/bookie.git
 cd bookie
+npm ci
+npm run dev
 ```
 
-3. Open `index.html` in your web browser
+Open [http://localhost:3000](http://localhost:3000) in a browser.
 
-## 🛠️ Technology Stack
+## Available scripts
 
-- HTML5
-- CSS3 (with modern features like Grid and Flexbox)
-- JavaScript (ES6+)
-- GSAP (GreenSock Animation Platform)
-- Google Fonts
-- Responsive Design
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the development server with Turbopack |
+| `npm run build` | Create a production build |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run ESLint across the project |
+| `npm run typecheck` | Run TypeScript without emitting files |
 
-## 📊 Project Statistics
+## Project structure
 
-- 📚 10K+ Books
-- 👥 50K+ Active Readers
-- ⭐ 1M+ Downloads
+```text
+src/app/             App Router entrypoint, metadata, and global styles
+src/components/      Sections that make up the landing page
+public/              Local illustrations and image assets
+```
 
-## 🎯 Future Enhancements
+## Contributing
 
-- [ ] Mobile application development
-- [ ] Offline reading capability
-- [ ] Advanced search filters
-- [ ] Social media integration
-- [ ] Audio book support
-- [ ] Reading analytics dashboard
+Small improvements and focused fixes are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 
-## 🤝 Contributing
+## Security
 
-We welcome contributions to Bookie! Please follow these steps:
+Please see [SECURITY.md](SECURITY.md) for responsible disclosure guidance.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## License
 
-## 📝 License
+No license file is currently included in this repository. Unless a license is added, the source is not licensed for reuse beyond the permissions granted by applicable law.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Maintainer
 
-## 👨‍💻 Author
-
-**Bhargavtz**
-- GitHub: [@Bhargavtz](https://github.com/Bhargavtz)
-
-## 🙏 Acknowledgments
-
-- Special thanks to all contributors
-- Book cover images and illustrations from various artists
-- Icons and design inspiration from the open-source community
-
----
-Made with ❤️ by Bhargavtz
+[Bhargavtz](https://github.com/Bhargavtz)
