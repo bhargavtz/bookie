@@ -20,7 +20,7 @@ const PALETTES: readonly CoverPalette[] = [
   { base: "#8f4f1d", accent: "#f3d9b1", ink: "#fff6ea", spine: "#5e3212" },
   { base: "#2f3b44", accent: "#8fd3c7", ink: "#eef4f3", spine: "#1d262c" },
   { base: "#4a2d55", accent: "#f0a8c8", ink: "#faf0f6", spine: "#2e1a35" },
-  { base: "#e6dccb", accent: "#2650d6", ink: "#1c1b19", spine: "#c9bda4" },
+  { base: "#e6dccb", accent: "#2563eb", ink: "#1c1b19", spine: "#c9bda4" },
 ];
 
 /** FNV-1a, 32-bit. Stable across runs and platforms, unlike Math.random. */

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Newsreader } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 import "./globals.css";
 
 const uiFont = Geist({
@@ -9,11 +10,12 @@ const uiFont = Geist({
   display: "swap",
 });
 
-const editorialFont = Newsreader({
+const editorialFont = Instrument_Serif({
   variable: "--font-editorial",
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -36,8 +38,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6f2e8" },
-    { media: "(prefers-color-scheme: dark)", color: "#161513" },
+    { media: "(prefers-color-scheme: light)", color: "#000000" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
 };
 
@@ -47,12 +49,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <body
         className={`${uiFont.variable} ${editorialFont.variable} antialiased`}
       >
         <SkipLink />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
