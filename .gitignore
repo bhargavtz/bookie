@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# bookie: local data, logs, generated assets
+/.data/
+/.logs/
+/public/pdfjs/
+/tests/fixtures/generated/
+/playwright-report/
+/test-results/
+!.env.example

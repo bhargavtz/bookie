@@ -1,0 +1,189 @@
+/*
+ * Bookie design tokens.
+ *
+ * Colours are CSS custom properties on :root with two dark variants (OS
+ * preference unless the page forces data-theme="light", or data-theme="dark").
+ * The @theme block maps those variables onto Tailwind utilities, so
+ * `bg-canvas` or `text-ink` follow the active theme at runtime. The palette
+ * namespace is cleared so only these tokens exist as colour utilities.
+ *
+ * Contrast targets: body text >= 7:1 on canvas, interactive text and borders
+ * >= 4.5:1 (WCAG AA). Values were checked by hand against the luminance
+ * formula when this file was written (2026-11-11).
+ */
+
+@theme inline {
+  --color-*: initial;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-on-accent: var(--on-accent);
+  --color-focus: var(--focus);
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-danger: var(--danger);
+  --color-danger-subtle: var(--danger-subtle);
+
+  --font-sans: var(--font-ui), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-editorial), Georgia, "Times New Roman", serif;
+
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 999px;
+
+  --shadow-sm: var(--elevation-sm);
+  --shadow-md: var(--elevation-md);
+  --shadow-lg: var(--elevation-lg);
+  --shadow-cover: var(--elevation-cover);
+
+  --container-content: 76rem;
+  --container-prose: 42rem;
+}
+
+@theme {
+  /* Type scale (1.2 minor-third steps above base, editorial display sizes). */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.3rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.6rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.8rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: clamp(2.125rem, 1.6rem + 2.2vw, 2.75rem);
+  --text-4xl--line-height: 1.12;
+  --text-5xl: clamp(2.75rem, 1.9rem + 3.6vw, 4.25rem);
+  --text-5xl--line-height: 1.04;
+
+  --tracking-editorial: -0.015em;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-emphasis: cubic-bezier(0.3, 0.9, 0.3, 1.1);
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+  --duration-slow: 420ms;
+}
+
+/* ---- Light theme (default) ------------------------------------------------ */
+:root {
+  color-scheme: light;
+
+  --canvas: #f6f2e8;
+  --surface: #fbf8f1;
+  --surface-raised: #ffffff;
+  --surface-sunken: #ebe5d4;
+  --ink: #1c1b19;
+  --ink-muted: #5a5548;
+  --border: #d8d0bd;
+  --border-strong: #a69c84;
+
+  --accent: #2650d6;
+  --accent-hover: #1d41b5;
+  --accent-ink: #1d41b5;
+  --accent-subtle: #e3e9fb;
+  --on-accent: #ffffff;
+  --focus: #2650d6;
+
+  --success: #1e6b47;
+  --success-subtle: #dcefe5;
+  --warning: #8a5300;
+  --warning-subtle: #f7ebd2;
+  --danger: #a8281c;
+  --danger-subtle: #f8e0dc;
+
+  --elevation-sm: 0 1px 2px rgb(28 27 25 / 0.06);
+  --elevation-md: 0 6px 18px -6px rgb(28 27 25 / 0.14), 0 2px 4px rgb(28 27 25 / 0.04);
+  --elevation-lg: 0 24px 48px -18px rgb(28 27 25 / 0.28), 0 6px 12px -6px rgb(28 27 25 / 0.12);
+  --elevation-cover: 0 30px 40px -18px rgb(28 27 25 / 0.45), 0 12px 16px -10px rgb(28 27 25 / 0.3);
+
+  --header-blur: saturate(140%) blur(12px);
+}
+
+/* ---- Dark theme: OS preference, unless the page pins light ----------------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --canvas: #161513;
+    --surface: #1d1c19;
+    --surface-raised: #242320;
+    --surface-sunken: #111010;
+    --ink: #f2eee4;
+    --ink-muted: #b6ae9c;
+    --border: #3a3731;
+    --border-strong: #5f594d;
+
+    --accent: #8fa8ff;
+    --accent-hover: #aabfff;
+    --accent-ink: #9db3ff;
+    --accent-subtle: #1f2a4f;
+    --on-accent: #0c1433;
+    --focus: #8fa8ff;
+
+    --success: #7fd3a6;
+    --success-subtle: #173326;
+    --warning: #f0c069;
+    --warning-subtle: #3a2c12;
+    --danger: #ff9b8f;
+    --danger-subtle: #3d1d19;
+
+    --elevation-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --elevation-md: 0 8px 22px -8px rgb(0 0 0 / 0.6), 0 2px 4px rgb(0 0 0 / 0.3);
+    --elevation-lg: 0 28px 52px -18px rgb(0 0 0 / 0.75), 0 8px 14px -8px rgb(0 0 0 / 0.5);
+    --elevation-cover: 0 34px 44px -18px rgb(0 0 0 / 0.8), 0 12px 18px -10px rgb(0 0 0 / 0.55);
+  }
+}
+
+/* ---- Dark theme: explicit choice ------------------------------------------ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --canvas: #161513;
+  --surface: #1d1c19;
+  --surface-raised: #242320;
+  --surface-sunken: #111010;
+  --ink: #f2eee4;
+  --ink-muted: #b6ae9c;
+  --border: #3a3731;
+  --border-strong: #5f594d;
+
+  --accent: #8fa8ff;
+  --accent-hover: #aabfff;
+  --accent-ink: #9db3ff;
+  --accent-subtle: #1f2a4f;
+  --on-accent: #0c1433;
+  --focus: #8fa8ff;
+
+  --success: #7fd3a6;
+  --success-subtle: #173326;
+  --warning: #f0c069;
+  --warning-subtle: #3a2c12;
+  --danger: #ff9b8f;
+  --danger-subtle: #3d1d19;
+
+  --elevation-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --elevation-md: 0 8px 22px -8px rgb(0 0 0 / 0.6), 0 2px 4px rgb(0 0 0 / 0.3);
+  --elevation-lg: 0 28px 52px -18px rgb(0 0 0 / 0.75), 0 8px 14px -8px rgb(0 0 0 / 0.5);
+  --elevation-cover: 0 34px 44px -18px rgb(0 0 0 / 0.8), 0 12px 18px -10px rgb(0 0 0 / 0.55);
+}

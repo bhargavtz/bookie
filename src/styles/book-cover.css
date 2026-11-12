@@ -1,0 +1,184 @@
+/*
+ * Generated book covers (BookCover3D). No real cover art is used anywhere.
+ * 3D transforms are limited to: the cover's own perspective, the pointer tilt
+ * (fine pointers only, see PointerTilt), the spine and page-edge layers, the
+ * ground shadow, and the hover depth lift. Everything moves only when motion
+ * is allowed.
+ */
+
+.bk-cover-scene {
+  --cover-w: 10rem;
+  --cover-h: calc(var(--cover-w) * 1.5);
+  --cover-depth: calc(var(--cover-w) * 0.13);
+  --tilt-x: 0;
+  --tilt-y: 0;
+
+  position: relative;
+  width: var(--cover-w);
+  height: var(--cover-h);
+  perspective: 1400px;
+  flex-shrink: 0;
+}
+
+.bk-cover-scene[data-size="sm"] {
+  --cover-w: 6.5rem;
+}
+
+.bk-cover-scene[data-size="md"] {
+  --cover-w: 10rem;
+}
+
+.bk-cover-scene[data-size="lg"] {
+  --cover-w: 15rem;
+}
+
+.bk-cover-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(var(--tilt-x) * 1deg)) rotateY(calc(var(--tilt-y) * 1deg));
+  transition: transform var(--duration-slow) var(--ease-out);
+  will-change: transform;
+}
+
+.bk-cover-book {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateY(-24deg);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.bk-cover-face {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 6%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--cover-w) * 0.1) calc(var(--cover-w) * 0.09) calc(var(--cover-w) * 0.08);
+  overflow: hidden;
+  border-radius: 2px 5px 5px 2px;
+  background:
+    linear-gradient(
+      100deg,
+      rgb(255 255 255 / 0.16) 0%,
+      rgb(255 255 255 / 0) 22%,
+      rgb(0 0 0 / 0.12) 100%
+    ),
+    var(--cover-base);
+  color: var(--cover-ink);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.1),
+    inset -6px 0 10px -6px rgb(0 0 0 / 0.35),
+    var(--shadow-cover);
+  transform: translateZ(calc(var(--cover-depth) * 0.5));
+}
+
+.bk-cover-face::after {
+  /* Subtle paper grain via layered gradients; no image asset needed. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgb(255 255 255 / 0.025) 0 1px,
+    rgb(0 0 0 / 0) 1px 3px
+  );
+}
+
+.bk-cover-band {
+  align-self: stretch;
+  height: calc(var(--cover-w) * 0.035);
+  background: var(--cover-accent);
+  opacity: 0.9;
+}
+
+.bk-cover-author {
+  font-family: var(--font-ui), ui-sans-serif, system-ui, sans-serif;
+  font-size: calc(var(--cover-w) * 0.058);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  opacity: 0.85;
+  overflow-wrap: anywhere;
+}
+
+.bk-cover-title {
+  font-family: var(--font-editorial), Georgia, serif;
+  font-size: calc(var(--cover-w) * 0.118);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.bk-cover-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 6%;
+  background: linear-gradient(90deg, var(--cover-spine) 0%, var(--cover-base) 100%);
+  transform: translateX(-100%) rotateY(-90deg);
+  transform-origin: right center;
+  box-shadow: inset -2px 0 4px rgb(0 0 0 / 0.25);
+}
+
+.bk-cover-pages {
+  position: absolute;
+  top: 1.5%;
+  bottom: 1.5%;
+  right: -2%;
+  width: 4%;
+  background: repeating-linear-gradient(90deg, #f3eee1 0 1px, #cfc6b1 1px 2px);
+  transform: rotateY(90deg) translateZ(calc(var(--cover-depth) * 0.5));
+  transform-origin: left center;
+  opacity: 0.95;
+}
+
+.bk-cover-shadow {
+  position: absolute;
+  left: 8%;
+  right: -6%;
+  bottom: -5%;
+  height: 9%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(28 27 25 / 0.32), rgb(28 27 25 / 0));
+  filter: blur(4px);
+  transform: translateZ(-1px);
+}
+
+/* Hover depth: the cover lifts and straightens a little (fine pointers only). */
+@media (hover: hover) and (pointer: fine) {
+  .bk-cover-scene:hover .bk-cover-book {
+    transform: rotateY(-14deg) translateY(calc(var(--cover-w) * -0.03));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bk-cover-tilt,
+  .bk-cover-book {
+    transition: none;
+    transform: rotateY(-24deg);
+  }
+
+  .bk-cover-scene:hover .bk-cover-book {
+    transform: rotateY(-24deg);
+  }
+}
+
+/* Light-touch fallback: no 3D on touch devices, which keeps covers flat and crisp. */
+@media (hover: none) {
+  .bk-cover-book {
+    transform: rotateY(-12deg);
+  }
+
+  .bk-cover-tilt {
+    transform: none;
+  }
+}

@@ -1,20 +1,44 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Newsreader } from "next/font/google";
+import { SkipLink } from "@/components/layout/SkipLink";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const uiFont = Geist({
+  variable: "--font-ui",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const editorialFont = Newsreader({
+  variable: "--font-editorial",
   subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Bookie | Discover your next great read",
-  description: "A reading-platform landing page for discovering books, categories, and reading inspiration.",
+  title: {
+    default: "Bookie",
+    template: "%s | Bookie",
+  },
+  description:
+    "A rights-cleared digital library for programming and computer science, with a built-in reader.",
+  openGraph: {
+    siteName: "Bookie",
+    type: "website",
+    title: "Bookie",
+    description:
+      "A rights-cleared digital library for programming and computer science, with a built-in reader.",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f2e8" },
+    { media: "(prefers-color-scheme: dark)", color: "#161513" },
+  ],
 };
 
 export default function RootLayout({
@@ -25,8 +49,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${uiFont.variable} ${editorialFont.variable} antialiased`}
       >
+        <SkipLink />
         {children}
       </body>
     </html>
